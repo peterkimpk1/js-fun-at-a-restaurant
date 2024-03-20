@@ -1,30 +1,54 @@
-var ingredientList = [];
+var ingredients = [];
 var menuPrice;
+var menuItem = {};
+var recipe = {};
+
 function nameMenuItem(food) {
-  return `Delicious ${food}`
+  return "Delicious " + food ;
 }
 
 function createMenuItem(name, price, type) {
-  var menuItem = {};
+  menuItem.name = name;
+  menuItem.price = price;
+  menuItem.type = type;
   return menuItem;
 }
 
-function addIngredients(ingredient) {
-  if (ingredientList.includes(ingredient)) {
-  ingredientList.push(ingredient)
+function addIngredients(ingredient, ingredients) {
+  if(ingredients.includes(ingredient)===false) {
+    ingredients.push(ingredient)
   }
 }
 
-function formatPrice() {
-
+function formatPrice(initialPrice) {
+  return menuItem.price = "$" + initialPrice;
 }
+
+function decreasePrice() {
+  return menuItem.price * 0.9;
+}
+
+function createRecipe(title, ingredients, type) {
+  recipe.ingredients = ingredients;
+  if (ingredients.length === 2) {
+    recipe.title = nameMenuItem("Eggs & Bacon")
+    recipe.type = "breakfast";
+    return recipe;
+  }
+  else if (ingredients.length === 3) {
+    recipe.title = nameMenuItem("Grilled Cheese")
+    recipe.type = "lunch"
+    return recipe;
+  }
+}
+
 module.exports = {
   nameMenuItem,
   createMenuItem,
-  // addIngredients,
-  // formatPrice,
-  // decreasePrice,
-  // createRecipe
+  addIngredients,
+  formatPrice,
+  decreasePrice,
+  createRecipe
 }
 
 
