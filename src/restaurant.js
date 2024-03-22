@@ -2,13 +2,6 @@ var restaurant = {
   name:"",
   menus:[],
 };
-var baconEggsPizza = {
-  name: "Bacon and Eggs Pizza",
-  price: "13.49",
-  type: "breakfast"
-};
-
-var pizzaRestaurant = createRestaurant("Sexy Pizza");
 
 function createRestaurant(name) {
   restaurant.name = name;
@@ -53,10 +46,45 @@ function removeMenuItem(pizzaRestaurant,foodName,foodType) { //name & type are s
   }
 }
 
-// function checkForFood()
+
+function checkForFood(restaurant, foodItem) {
+  if (restaurant.menus.breakfast.length !== 0) {
+    for (var i = 0; i < restaurant.menus.breakfast.length; i++) {
+      if (foodItem.name === restaurant.menus.breakfast[i].name) {
+        return `Yes, we're serving ${foodItem.name} today!`
+      }
+    }
+  }
+  else {
+    return `Sorry, we aren't serving ${foodItem.name} today.`
+  }
+
+}
+//   else if (restaurant.menus.lunch.length !== 0) {
+//     for (var i = 0; i < restaurant.menus.lunch.length; i++) {
+//       if (foodItem.name === restaurant.menus.lunch[i].name) {
+//         return `Yes, we're serving ${foodItem.name} today!`
+//     }
+//     else {
+//       return `Sorry, we aren't serving ${foodItem.name} today.`
+//     }
+//   }
+//   }
+//   else if (restaurant.menus.lunch.length !== 0) {
+//     for (var i = 0; i < restaurant.menus.lunch.length; i++) {
+//       if (foodItem.name === restaurant.menus.lunch[i].name) {
+//         return `Yes, we're serving ${foodItem.name} today!`
+//     }
+//     else {
+//       return `Sorry, we aren't serving ${foodItem.name} today.`
+//     }
+//   }
+// }
+// I can only loop through one of the menu arrays with the forloop but I want to check multiple arrays
+
 module.exports = {
   createRestaurant, 
   addMenuItem,
   removeMenuItem,
-  // checkForFood
+  checkForFood
 }
